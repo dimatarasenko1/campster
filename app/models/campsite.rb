@@ -13,4 +13,8 @@ class Campsite < ApplicationRecord
             :country,
             :max_guests, presence: true
   validates :amenities, inclusion: { in: AMENITIES }
+
+  def self.search(options = {})
+    Campsite.all
+  end
 end
