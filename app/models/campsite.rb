@@ -1,4 +1,8 @@
 class Campsite < ApplicationRecord
+  has_many :bookings
+  has_many :reviews, through: :bookings
+  has_many :unavailables
+  belongs_to :user
   AMENITIES = %w(pet\ friendly campfire\ allowed bins toilet)
   validates :title,
             :description,
