@@ -15,9 +15,8 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
-    <%= f.input :host,
-                required: false,
-                as: :boolean, checked_value: true, unchecked_value: false %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
   </div>
 
   <div class="form-actions">
