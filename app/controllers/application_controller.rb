@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  # authentication does not go here - open by default, need to spcify in controller
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters

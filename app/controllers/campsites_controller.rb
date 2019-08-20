@@ -1,5 +1,5 @@
 class CampsitesController < ApplicationController
-  before_action :load_user, only: [:new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
 
   def index
     if !params[:query].nil?
@@ -31,7 +31,7 @@ class CampsitesController < ApplicationController
 
   def create
     @campsite = Campsite.new(campsite_params)
-    @campsite.user = @user
+    @campsite.user = current_user
     if @campsite.valid?
       @campsite.save
       redirect_to campsite_path(@campsite)
@@ -55,10 +55,6 @@ class CampsitesController < ApplicationController
   end
 
   private
-
-  def load_user
-    @user = User.find(params[:user_id])
-  end
 
   def campsite_params
     params.require(:campsite).permit(:title,

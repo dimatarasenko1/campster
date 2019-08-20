@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_user! # => Any action to do with bookings has to be authenticated
   def new
     # @booking = build_booking_from_params
     # if @booking.valid?
