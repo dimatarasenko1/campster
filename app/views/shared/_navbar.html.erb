@@ -11,29 +11,29 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item active">
+        <li class="nav-item mx-2">
           <%= link_to "My bookings", "#", class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item mx-2">
           <%= link_to "Messages", "#", class: "nav-link" %>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown mx-2">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
+            <%= link_to "If Host, my listings", "#", class: "dropdown-item" %>
+            <%= link_to "My Account", "#", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Sign-up", new_user_session_path, class: "nav-link" %>
+        <li class="nav-item mx-2">
+          <%= link_to "Sign-up", new_user_registration_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item mx-2">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Host", new_user_session_path, class: "nav-link btn btn-outline-primary" %>
+        <li class="nav-item mx-2">
+          <%= link_to "Host", new_user_registration_path, class: "nav-link btn btn-outline-primary" %>
         </li>
       <% end %>
     </ul>
