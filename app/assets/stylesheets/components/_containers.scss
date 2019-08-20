@@ -29,3 +29,18 @@
 .top-bar-below-nav {
   margin-top: 100px;
 }
+
+body, html {
+   min-height: 100vh;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 80px;
+    /* bottom = footer height */
+    padding: 0px;
+}
