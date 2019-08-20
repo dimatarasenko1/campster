@@ -30,6 +30,7 @@ class CampsitesController < ApplicationController
   def show
     @campsite = Campsite.find(params[:id])
     authorize @campsite
+    @review = Review.new
   end
 
   def create
