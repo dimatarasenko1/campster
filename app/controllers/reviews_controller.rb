@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_booking, only: [:new, :create, :edit, :update]
+  before_action :set_booking
 
   def new
     @review = Review.new
