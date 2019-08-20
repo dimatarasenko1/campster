@@ -1,0 +1,41 @@
+.banner {
+  display: flex;
+  background-size: cover;
+  background-position: center;
+  width: 1300px;
+  height: 720px;
+}
+
+.banner h1 {
+  margin-top: 200px;
+  margin-left: 50px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner h2 {
+  margin-left: 50px;
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.banner p {
+  font-size: 8px !important;
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 1000;
+}
+
+.search-container {
+
+  background-color: white;
+  width: 400px;
+  height: 300px;
+  margin-top: 150px;
+  margin-left: 100px;
+}

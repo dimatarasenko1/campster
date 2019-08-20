@@ -1,0 +1,27 @@
+// homepage containers
+
+.sub-container {
+  flex-grow: 1;
+  margin: 50px;
+}
+
+.product-container {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  margin: 50px;
+}
+
+// index containers
+.main-container {
+  display: flex;
+}
+
+.cards {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  margin: 16px;
+}
