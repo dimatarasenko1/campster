@@ -1,0 +1,6 @@
+<%= simple_form_for :query, url: campsites_path, method: :get do |f| %>
+  <%= f.input :location %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :end_date, as: :date %>
+  <%= f.button :submit, class: "btn-primary" %>
+<% end %>
