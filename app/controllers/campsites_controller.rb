@@ -72,6 +72,7 @@ class CampsitesController < ApplicationController
                                      :city,
                                      :country,
                                      :max_guests,
-                                     :amenities)
+                                     :amenities,
+                                     :photo)
   end
 end
