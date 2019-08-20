@@ -11,12 +11,13 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
-    <p class="notice m-0"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <!-- <p class="notice m-0"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
     <div style="margin-bottom: 0px; <% unless current_page?('/') %>margin-top: 40px; <% end %>">
       <%= yield %>
     </div>
     <%= render 'shared/footer' %>
+    <%= render 'shared/flashes' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
