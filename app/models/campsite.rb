@@ -13,6 +13,7 @@ class Campsite < ApplicationRecord
   #           :country,
   #           :max_guests, presence: true
   # validates :amenities, inclusion: { in: AMENITIES }
+  mount_uploader :photo, PhotoUploader
 
   def self.search(options = {})
     Campsite.all
