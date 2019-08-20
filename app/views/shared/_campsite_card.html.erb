@@ -1,0 +1,13 @@
+<div class="card-trip">
+  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+  <div class="card-trip-infos">
+    <div>
+      <%= link_to campsite_path(campsite) do %>
+        <h2><%= campsite.title %></h2>
+      <% end %>
+      <p><%= campsite.description[0...50] %> ...</p>
+    </div>
+    <h2 class="card-trip-pricing">£<%= campsite.price_per_night %></h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+  </div>
+</div>

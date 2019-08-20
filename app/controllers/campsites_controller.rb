@@ -1,5 +1,5 @@
 class CampsitesController < ApplicationController
-  before_action :load_user, only: [:new, :create]
+  before_action :load_user, only: [:new, :create, :edit, :update]
 
   def index
     if !params[:query].nil?
@@ -34,6 +34,20 @@ class CampsitesController < ApplicationController
     @campsite.user = @user
     if @campsite.valid?
       @campsite.save
+      redirect_to campsite_path(@campsite)
+    else
+      render :new
+    end
+  end
+
+  def edit
+    @campsite = Campsite.find(params[:id])
+    render :new
+  end
+
+  def update
+    @campsite = Campsite.find(params[:id])
+    if @campsite.update(campsite_params)
       redirect_to campsite_path(@campsite)
     else
       render :new

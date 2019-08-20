@@ -1,23 +1,28 @@
 class BookingsController < ApplicationController
   def new
-    @booking = build_booking_from_params
-    if @booking.valid?
-      # actually show the confirmation page
-      render :new
-    else
-      # back to where you came from
-      redirect_to campsite_path(@campsite)
-    end
+    # @booking = build_booking_from_params
+    # if @booking.valid?
+    #   # actually show the confirmation page
+    #   render :new
+    # else
+    #   # back to where you came from
+    #   redirect_to campsite_path(@campsite)
+    # end
+    @booking = Booking.new
+    @campsite = Campsite.find(params[:campsite_id])
   end
 
   def create
-    @booking = build_booking_from_params
-    if @booking.valid?
-      @booking.save
-      redirect_to user_path(current_user)
-    else
-      render :new
-    end
+    # @booking = build_booking_from_params
+    # if @booking.valid?
+    #   @booking.save
+    #   redirect_to user_path(current_user)
+    # else
+    #   render :new
+    # end
+    campsite = params[:campsite_id].to_i
+    @booking = Booking.new(campsite_id: campsite, user_id: current_user.id)
+    redirect_to campsite_path(campsite)
   end
 
   private
@@ -27,8 +32,9 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.permit(:booking_params).require("start_date(3i)", "start_date(2i)",
-                                           "start_date(1i)", "guests")
+    # params.permit(:booking_params).require("start_date(3i)", "start_date(2i)",
+    #                                        "start_date(1i)", "guests")
+    params.require(:campsite_id)
   end
 
   def build_booking_from_params

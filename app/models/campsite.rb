@@ -7,12 +7,12 @@ class Campsite < ApplicationRecord
   validates :title,
             :description,
             :price_per_night,
-            :address,
-            :postcode,
-            :city,
-            :country,
-            :max_guests, presence: true
-  validates :amenities, inclusion: { in: AMENITIES }
+            :address, presence: true
+  #           :postcode,
+  #           :city,
+  #           :country,
+  #           :max_guests, presence: true
+  # validates :amenities, inclusion: { in: AMENITIES }
 
   def self.search(options = {})
     Campsite.all

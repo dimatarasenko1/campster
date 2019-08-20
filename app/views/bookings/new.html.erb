@@ -1,0 +1,7 @@
+<div class="top-bar-below-nav">
+  <h1><%= @campsite.title %></h1>
+  <h2><%= current_user.first_name %></h2>
+  <%= simple_form_for [@campsite, @booking] do |f| %>
+    <%= f.button :submit, class: "btn-primary" %>
+  <% end %>
+</div>

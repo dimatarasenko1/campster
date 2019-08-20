@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: [:show, :update]
   resources :users, only: :show do
-    resources :campsites, only: [:new, :create]
+    resources :campsites, only: [:new, :create, :edit, :update]
   end
 end
