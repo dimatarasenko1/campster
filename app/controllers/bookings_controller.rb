@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
     #   redirect_to campsite_path(@campsite)
     # end
     @campsite = Campsite.find(params[:campsite_id])
-    @booking = Booking.new(campsite_id: @campsite)
+    @booking = Booking.new(campsite: @campsite)
     authorize @booking
   end
 
@@ -22,10 +22,11 @@ class BookingsController < ApplicationController
     # else
     #   render :new
     # end
+    @campsite = Campsite.find(params[:campsite_id])
+    @booking = Booking.new(campsite: @campsite)
     authorize @booking
-    campsite = params[:campsite_id].to_i
-    @booking = Booking.new(campsite_id: campsite, user_id: current_user.id)
-    redirect_to campsite_path(campsite)
+    @booking.save
+    redirect_to campsite_path(@campsite)
   end
 
   def index
