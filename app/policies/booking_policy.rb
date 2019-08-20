@@ -3,21 +3,22 @@ class BookingPolicy < ApplicationPolicy
     def resolve
       scope.where(user: user)
     end
+  end
 
-    def show
+  def show
       record.user == user
-    end
+  end
 
-    def index
-      true
-    end
 
-    def create?
-      current_user != record.campsite.user
-    end
+  def index
+    true
+  end
 
-    def update
-      current_user == record.user && current_user != record.campsite.user
-    end
+  def create?
+    user != record.campsite.user
+  end
+
+  def update
+    user == record.user && user != record.campsite.user
   end
 end

@@ -1,14 +1,11 @@
-
-<div class="top-bar-below-nav">
+<div class="container">
   <p>this is where the search bar will be</p>
+  <div class="main-container">
+    <div class="cards">
+      <% @campsites.each do |campsite| %>
+        <%= render 'shared/campsite_card', campsite: campsite %>
+        <% end %>
+    </div>
+      <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoiY2dlb2Zmcm95IiwiYSI6ImNqeXUzeGhuZDBhM3EzbW40dmxob29qa3MifQ.wDBmcmH5GsEmht6hRiop2g'>
+  </div>
 </div>
-<div class="main-container">
-  <div class="cards">
-    <% @campsites.each do |campsite| %>
-      <%= render 'shared/campsite_card', campsite: campsite %>
-      <% end %>
-  </div>
-    <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoiY2dlb2Zmcm95IiwiYSI6ImNqeXUzeGhuZDBhM3EzbW40dmxob29qa3MifQ.wDBmcmH5GsEmht6hRiop2g'>
-  </div>
-
-

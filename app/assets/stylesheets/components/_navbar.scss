@@ -1,10 +1,19 @@
 .navbar-lewagon {
-  position: absolute;
+  // position: absolute;
   width: 100vw;
   padding: 20px 40px;
   justify-content: space-between;
-  background: transparent;
+  background-color: #333;
 }
+// .navbar-lewagon {
+//   overflow: hidden;
+//   background-color: #333;
+//   position: fixed; /* Set the navbar to fixed position */
+//   top: 0; /* Position the navbar at the top of the page */
+//   width: 100%; /* Full width */
+//   justify-content: space-between;
+//   padding: 20px 40px;
+// }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
@@ -20,4 +29,19 @@
 
 .navbar-light .navbar-nav .nav-link:hover {
   color: #bef7d3 !important;
+}
+
+body, html {
+   min-height: 100vh;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 80px;
+    /* bottom = footer height */
+    padding: 0px;
 }
