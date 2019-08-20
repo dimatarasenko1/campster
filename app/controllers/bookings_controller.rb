@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_user! # => Any action to do with bookings has to be authenticated
   def new
     # @booking = build_booking_from_params
     # if @booking.valid?
@@ -8,8 +9,9 @@ class BookingsController < ApplicationController
     #   # back to where you came from
     #   redirect_to campsite_path(@campsite)
     # end
-    @booking = Booking.new
     @campsite = Campsite.find(params[:campsite_id])
+    @booking = Booking.new(campsite_id: @campsite)
+    authorize @booking
   end
 
   def create
@@ -20,9 +22,14 @@ class BookingsController < ApplicationController
     # else
     #   render :new
     # end
+    authorize @booking
     campsite = params[:campsite_id].to_i
     @booking = Booking.new(campsite_id: campsite, user_id: current_user.id)
     redirect_to campsite_path(campsite)
+  end
+
+  def index
+    @bookings = policy_scope(Booking)
   end
 
   private
