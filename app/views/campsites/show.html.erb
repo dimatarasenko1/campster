@@ -4,3 +4,12 @@
   <%= link_to "Back to results", campsites_path %>
   <%= link_to "Book", new_campsite_booking_path(@campsite), class: 'btn btn-primary' %>
 </div>
+<div class="review-block">
+  <ul>
+    <% @campsite.reviews.each do |review|%>
+      <li><strong><%= review.title %></strong></li>
+      <li>review.content</li>
+  <% end %>
+  </ul>
+</div>
+
