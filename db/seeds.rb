@@ -37,7 +37,7 @@ campsites_attributes = [
     check_in: "5 PM",
     check_out: "10 AM",
     min_nights: 1,
-    address: "Lake District",
+    address: "PH50 4RJ",
     max_guests: 4,
     user: dima,
   },

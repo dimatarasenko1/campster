@@ -11,18 +11,18 @@ class BookingsController < ApplicationController
 
   def new
     @campsite = Campsite.find(params[:campsite_id])
-    @booking = Booking.new
+    @booking = Booking.new(campsite: @campsite)
     authorize @booking
   end
 
   def create
-    authorize @booking
     @campsite = Campsite.find(params[:campsite_id])
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new(campsite: @campsite)
+    authorize @booking
     @booking.user = current_user
     @booking.campsite = @campsite
     if @booking.save
-      redirect_to dashboard_path
+      redirect_to user_bookings_path(current_user)
     else
       render :new
     end
