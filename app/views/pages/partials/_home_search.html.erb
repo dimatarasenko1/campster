@@ -1,0 +1,7 @@
+<%= simple_form_for :query, url: campsites_path, method: :get do |f| %>
+    <%= f.input :address, input_html: { id: "campsite-address" } %>
+    <%= f.input :start_date, as: :string, input_html: {type: :date} %>
+    <%= f.input :end_date, as: :string, input_html: {type: :date} %>
+    <%= f.input :guests, as: :integer %>
+    <%= f.button :submit, "Search!", class: "btn-primary" %>
+<% end %>

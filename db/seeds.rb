@@ -124,27 +124,27 @@ campsites_attributes = [
 Campsite.create!(campsites_attributes)
 puts 'Went fishing...'
 puts 'Uploading pictures...'
-campsite = Campsite.find(1)
+campsite = Campsite.first
 url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386583/camping-6_vlkcmu.jpg"
 campsite.remote_photo_url = url
 campsite.save
-campsite = Campsite.find(2)
+campsite = Campsite.second
 url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386583/camping-4_cid7ko.jpg"
 campsite.remote_photo_url = url
 campsite.save
-campsite = Campsite.find(3)
+campsite = Campsite.third
 url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386582/camping-3_wgqqdt.jpg"
 campsite.remote_photo_url = url
 campsite.save
-campsite = Campsite.find(4)
+campsite = Campsite.fourth
 url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386582/camping-2_ar8nid.jpg"
 campsite.remote_photo_url = url
 campsite.save
-campsite = Campsite.find(5)
+campsite = Campsite.fifth
 url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386582/camping-1_yotp8u.jpg"
 campsite.remote_photo_url = url
 campsite.save
-campsite = Campsite.find(6)
+campsite = Campsite.offset(1).fifth
 url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386583/camping-5_jbqt6z.jpg"
 campsite.remote_photo_url = url
 campsite.save
