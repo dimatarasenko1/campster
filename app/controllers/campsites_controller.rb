@@ -23,7 +23,8 @@ class CampsitesController < ApplicationController
     @markers = @campsites.map do |campsite|
       {
         lat: campsite.latitude,
-        lng: campsite.longitude
+        lng: campsite.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { campsite: campsite })
       }
     end
     # at this point campsites should be an array of suitable objects ready for view.
