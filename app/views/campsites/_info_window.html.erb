@@ -1,2 +1,9 @@
-<h2><%= campsite.title %></h2>
-<p><%= campsite.address %></p>
+<%= link_to campsite_path(campsite) do %>
+  <h2><%= campsite.title %></h2>
+<% end %>
+<div class="card-popup-img">
+  <%= cl_image_tag(campsite.photo,
+      width: 200, height: 100) %>
+</div>
+
+
