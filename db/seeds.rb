@@ -1,7 +1,33 @@
 puts 'Cleaning database...'
 Campsite.destroy_all
+User.destroy_all
 
-user = User.find(1)
+puts 'Creating users...'
+victor = User.new
+victor.first_name = "test"
+victor.last_name = "test"
+victor.email = 'victor@example.com'
+victor.password = "123456"
+victor.password_confirmation = "123456"
+victor.save!
+
+charles = User.new
+charles.email = 'charles@example.com'
+charles.first_name = "test"
+charles.last_name = "test"
+charles.password = "123456"
+charles.password_confirmation = "123456"
+charles.save!
+
+dima = User.new
+dima.email = 'dima@example.com'
+dima.first_name = "test"
+dima.last_name = "test"
+dima.password = "123456"
+dima.password_confirmation = "123456"
+dima.save!
+
+puts 'Finished!'
 puts 'Creating campsites...'
 campsites_attributes = [
   {
@@ -17,7 +43,7 @@ campsites_attributes = [
     county: "Scotland",
     country: "United-kingdom",
     max_guests: 4,
-    user: user,
+    user: dima,
   },
   {
     title: "Blackwater Hostel, Glamping & Campsite",
@@ -32,7 +58,7 @@ campsites_attributes = [
     county: "Scotland",
     country: "United-kingdom",
     max_guests: 4,
-    user: user,
+    user: victor,
   },
   {
     title: "Invercoe caravan & camping park",
@@ -47,7 +73,7 @@ campsites_attributes = [
     county: "Scotland",
     country: "United-kingdom",
     max_guests: 4,
-    user: user,
+    user: victor,
   },
   {
     title: "4 Winds Lakeland Tipis",
@@ -62,7 +88,7 @@ campsites_attributes = [
     county: "Lake District",
     country: "United-kingdom",
     max_guests: 4,
-    user: user,
+    user: dima,
   },
   {
     title: "Low Wray Campsite",
@@ -77,7 +103,7 @@ campsites_attributes = [
     county: "Lake District",
     country: "United-kingdom",
     max_guests: 3,
-    user: user,
+    user: charles,
   },
   {
     title: "BaysBrown Farm Campsite",
@@ -92,8 +118,34 @@ campsites_attributes = [
     county: "Lake District",
     country: "United-kingdom",
     max_guests: 4,
-    user: user,
+    user: charles,
   }
 ]
 Campsite.create!(campsites_attributes)
+puts 'Went fishing...'
+puts 'Uploading pictures...'
+campsite = Campsite.find(1)
+url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386583/camping-6_vlkcmu.jpg"
+campsite.remote_photo_url = url
+campsite.save
+campsite = Campsite.find(2)
+url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386583/camping-4_cid7ko.jpg"
+campsite.remote_photo_url = url
+campsite.save
+campsite = Campsite.find(3)
+url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386582/camping-3_wgqqdt.jpg"
+campsite.remote_photo_url = url
+campsite.save
+campsite = Campsite.find(4)
+url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386582/camping-2_ar8nid.jpg"
+campsite.remote_photo_url = url
+campsite.save
+campsite = Campsite.find(5)
+url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386582/camping-1_yotp8u.jpg"
+campsite.remote_photo_url = url
+campsite.save
+campsite = Campsite.find(6)
+url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386583/camping-5_jbqt6z.jpg"
+campsite.remote_photo_url = url
+campsite.save
 puts 'Finished!'
