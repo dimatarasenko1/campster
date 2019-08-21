@@ -3,9 +3,14 @@
   <div class="container" style="display: flex; justify-content: space-evenly;">
     <div class="left-container" style="justify-content: space-between;">
       <div class="cards">
+        <ul>
         <% @bookings.each do |booking| %>
+          <li> <%= booking.id %> - %= link_to booking_path(booking) %> </li>
+        <% end %>
+      </ul>
+<!--         <% @bookings.each do |booking| %>
           <%= render 'shared/campsite_card', campsite: booking %>
-          <% end %>
+          <% end %> -->
       </div>
     </div>
     <div class="right-container" style="width: 40%">
@@ -13,3 +18,5 @@
     </div>
   </div>
 </div>
+
+
