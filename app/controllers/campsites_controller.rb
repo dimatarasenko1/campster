@@ -8,7 +8,7 @@ class CampsitesController < ApplicationController
       query_params = params[:query]
       address = query_params["address"]
       @campsites = policy_scope(Campsite)
-      @campsites = Campsite.near(address, 10)
+      @campsites = Campsite.near(address, 100)
     else
       @campsites = policy_scope(Campsite)
     end
