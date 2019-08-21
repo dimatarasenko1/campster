@@ -1,0 +1,14 @@
+<div class="mx-3">
+  <div>
+    <%= link_to "Back to results", campsites_path %>
+    <h1><%= campsite.title %></h1>
+    <p><%= campsite.address %></p>
+    <div class="campsite-info d-flex my-3">
+      <div class="host-details d-flex align-items-center">
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar mr-3" %>
+          <p class="m-0"><%= campsite.user.email %></p>
+      </div>
+    </div>
+  </div>
+  <p class='m-0'><%= campsite.description %></p>
+</div>

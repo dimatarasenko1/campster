@@ -1,47 +1,19 @@
-<div class="container mt-0">
-  <div id="campsiteCarousel" class="carousel slide" data-ride="carousel" style="width: 800px; margin: 0 auto">
-    <ol class="carousel-indicators">
-      <li data-target="#campsiteCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#campsiteCarousel" data-slide-to="1"></li>
-      <li data-target="#campsiteCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-interval="2000">
-        <%= image_tag "astronomy", class: "d-block w-100" %>
-      </div>
-      <div class="carousel-item" data-interval="2000">
-        <%= image_tag "astronomy", class: "d-block w-100" %>
-      </div>
-      <div class="carousel-item" data-interval="2000">
-        <%= image_tag "astronomy", class: "d-block w-100" %>
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#campsiteCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#campsiteCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+<div class="container mt-0 mb-3">
+  <%= render 'carousel' %>
+  <div class="d-flex align-items-top my-5">
+    <%= render 'key_details', campsite: @campsite %>
+    <%= render 'booking_or_owner_form', campsite: @campsite %>
   </div>
-  <h1><%= @campsite.title %></h1>
-  <div class="campsite-info d-flex mt-3">
-    <div class="host-details d-flex align-items-center">
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar mr-3" %>
-        <p class="username m-0"><%= @campsite.user.first_name %></p>
+  <div class="bg-light p-3 border rounded">
+    <div class="big-details d-flex ml-3 justify-content-around">
+      <%= render 'amenities' %>
+      <%= render 'flat_details' %>
     </div>
+      <div class="reviews pt-3">
+        <h2>Reviews</h2>
+        <%= render 'review' %>
+      </div>
   </div>
-  <%= link_to "edit", edit_campsite_path, class: 'btn btn-outline-primary' %>
-  <%= link_to "Back to results", campsites_path %>
-  <%= link_to "Book", new_campsite_booking_path(@campsite), class: 'btn btn-primary' %>
 </div>
-<div class="review-block">
-  <ul>
-    <% @campsite.reviews.each do |review|%>
-      <li><strong><%= review.title %></strong></li>
-      <li>review.content</li>
-  <% end %>
-  </ul>
-</div>
+
 
