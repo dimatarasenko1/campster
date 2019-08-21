@@ -8,3 +8,23 @@
     margin-bottom: 16px;
   }
 }
+
+.key-details {
+  a {
+    color: inherit;
+  }
+
+  i {
+    color: $primary;
+    font-size: 0.8em;
+    margin-left: 5px;
+  }
+}
+
+#review-achor {
+  color: inherit;
+}
+
+#review-achor:hover {
+  color: inherit;
+}
