@@ -37,11 +37,7 @@ campsites_attributes = [
     check_in: "5 PM",
     check_out: "10 AM",
     min_nights: 1,
-    address: "Caolasnacon",
-    postcode: "PH50 4RJ",
-    city: "Kinlochleven",
-    county: "Scotland",
-    country: "United-kingdom",
+    address: "Lake District",
     max_guests: 4,
     user: dima,
   },
@@ -52,11 +48,7 @@ campsites_attributes = [
     check_in: "5 PM",
     check_out: "10 AM",
     min_nights: 2,
-    address: "Lab Road",
-    postcode: "PH50 4SG",
-    city: "Kinlochleven",
-    county: "Scotland",
-    country: "United-kingdom",
+    address: "PH50 4SG",
     max_guests: 4,
     user: victor,
   },
@@ -67,11 +59,7 @@ campsites_attributes = [
     check_in: "5 PM",
     check_out: "10 AM",
     min_nights: 2,
-    address: "Ballachulish",
-    postcode: "PH49 4HP",
-    city: "Glencoe",
-    county: "Scotland",
-    country: "United-kingdom",
+    address: "PH49 4HP",
     max_guests: 4,
     user: victor,
   },
@@ -82,11 +70,7 @@ campsites_attributes = [
     check_in: "5 PM",
     check_out: "10 AM",
     min_nights: 2,
-    address:"Low Wray",
-    postcode: "LA22 0JA",
-    city: "Ambleside",
-    county: "Lake District",
-    country: "United-kingdom",
+    address:"LA22 0JA",
     max_guests: 4,
     user: dima,
   },
@@ -97,11 +81,7 @@ campsites_attributes = [
     check_in: "5 PM",
     check_out: "10 AM",
     min_nights: 2,
-    address:"Low Wray",
-    postcode: "LA22 0JA",
-    city: "Ambleside",
-    county: "Lake District",
-    country: "United-kingdom",
+    address:"LA22 0JA",
     max_guests: 3,
     user: charles,
   },
@@ -112,11 +92,7 @@ campsites_attributes = [
     check_in: "5 PM",
     check_out: "10 AM",
     min_nights: 2,
-    address: "Great Langdale",
-    postcode: "LA22 9JZ",
-    city: "Ambleside",
-    county: "Lake District",
-    country: "United-kingdom",
+    address: "LA22 9JZ",
     max_guests: 4,
     user: charles,
   }
@@ -124,27 +100,27 @@ campsites_attributes = [
 Campsite.create!(campsites_attributes)
 puts 'Went fishing...'
 puts 'Uploading pictures...'
-campsite = Campsite.find(1)
+campsite = Campsite.first
 url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386583/camping-6_vlkcmu.jpg"
 campsite.remote_photo_url = url
 campsite.save
-campsite = Campsite.find(2)
+campsite = Campsite.second
 url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386583/camping-4_cid7ko.jpg"
 campsite.remote_photo_url = url
 campsite.save
-campsite = Campsite.find(3)
+campsite = Campsite.third
 url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386582/camping-3_wgqqdt.jpg"
 campsite.remote_photo_url = url
 campsite.save
-campsite = Campsite.find(4)
+campsite = Campsite.fourth
 url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386582/camping-2_ar8nid.jpg"
 campsite.remote_photo_url = url
 campsite.save
-campsite = Campsite.find(5)
+campsite = Campsite.fifth
 url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386582/camping-1_yotp8u.jpg"
 campsite.remote_photo_url = url
 campsite.save
-campsite = Campsite.find(6)
+campsite = Campsite.offset(1).fifth
 url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566386583/camping-5_jbqt6z.jpg"
 campsite.remote_photo_url = url
 campsite.save
