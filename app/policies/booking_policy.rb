@@ -5,12 +5,11 @@ class BookingPolicy < ApplicationPolicy
     end
   end
 
-  def show
-      record.user == user
+  def show?
+    record.user == user
   end
 
-
-  def index
+  def index?
     true
   end
 

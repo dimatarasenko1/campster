@@ -12,7 +12,7 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item mx-2">
-          <%= link_to "My bookings", "#", class: "nav-link" %>
+          <%= link_to "My bookings", user_bookings_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item mx-2">
           <%= link_to "New Campsite", new_campsite_path, class: "nav-link" %>

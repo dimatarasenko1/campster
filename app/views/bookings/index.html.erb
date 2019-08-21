@@ -4,17 +4,11 @@
     <div class="left-container" style="justify-content: space-between;">
       <div class="cards">
         <ul>
-        <% @bookings.each do |booking| %>
-          <li> <%= booking.id %> - %= link_to booking_path(booking) %> </li>
-        <% end %>
-      </ul>
-<!--         <% @bookings.each do |booking| %>
-          <%= render 'shared/campsite_card', campsite: booking %>
-          <% end %> -->
+          <% @bookings.each do |booking| %>
+            <li> <%= booking.id %> - <%= link_to booking.campsite.title ,booking_path(booking) %> </li>
+          <% end %>
+        </ul>
       </div>
-    </div>
-    <div class="right-container" style="width: 40%">
-      <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoiY2dlb2Zmcm95IiwiYSI6ImNqeXUzeGhuZDBhM3EzbW40dmxob29qa3MifQ.wDBmcmH5GsEmht6hRiop2g'>
     </div>
   </div>
 </div>
