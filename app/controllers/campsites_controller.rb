@@ -4,7 +4,7 @@ class CampsitesController < ApplicationController
   def index
     authorize Campsite
 
-    if params[:query][:address] != ""
+    if params[:query] && params[:query][:address] != ""
       query_params = params[:query]
       address = query_params["address"]
       @campsites = policy_scope(Campsite)
