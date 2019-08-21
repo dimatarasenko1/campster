@@ -1,0 +1,14 @@
+<div class="book flex-grow-1 bg-light p-3 border rounded w-100">
+  <p class="text-right m-0"><strong>£<%= campsite.price_per_night %> per night</strong></p>
+  <% if policy(Booking.new(campsite: campsite)).create? %>
+  <%= simple_form_for :query, url: new_campsite_booking_path(campsite), method: :get do |f| %>
+      <%= f.input :start_date, as: :string, input_html: {type: :date} %>
+      <%= f.input :end_date, as: :string, input_html: {type: :date} %>
+      <%= f.input :guests, as: :integer %>
+      <%= f.button :submit, "Book!", class: "btn-primary" %>
+    <% end %>
+  <% elsif policy(campsite).update? %>
+    <%= link_to "Edit Campsite", edit_campsite_path(campsite), class: "btn btn-primary" %>
+    <%= link_to "Manage Availability", edit_campsite_path(campsite), class: "btn btn-outline-primary" %>
+  <% end %>
+</div>
