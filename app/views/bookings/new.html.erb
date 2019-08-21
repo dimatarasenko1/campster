@@ -1,7 +1,18 @@
-<div class="container">
-  <h1><%= @campsite.title %></h1>
-  <h2><%= current_user.first_name %></h2>
-  <%= simple_form_for [@campsite, @booking] do |f| %>
-    <%= f.button :submit, class: "btn-primary" %>
-  <% end %>
+<div class="container" style="display: flex; justify-content: space-evenly;">
+  <div class="left-container">
+    <h1>You are booking <strong><%= @campsite.title.titleize %></strong> </h1>
+    <h4><strong>(<%= current_user.first_name.titleize %></strong> is your host for this booking)</h4>
+    <br>
+    <h4>
+      Dates: <strong>8 Sep' 19</strong> to <strong>15 Sep' 19</strong>
+    </h4>
+    <hr>
+    <br>
+    <%= simple_form_for [@campsite, @booking] do |f| %>
+      <%= f.button :submit, class: "btn-primary" %>
+    <% end %>
+  </div>
+  <div class="right-container">
+    <img id="map" src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoiY2dlb2Zmcm95IiwiYSI6ImNqeXUzeGhuZDBhM3EzbW40dmxob29qa3MifQ.wDBmcmH5GsEmht6hRiop2g">
+  </div>
 </div>
