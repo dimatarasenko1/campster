@@ -17,7 +17,8 @@ class CampsitesController < ApplicationController
       {
         lat: campsite.latitude,
         lng: campsite.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { campsite: campsite })
+        infoWindow: render_to_string(partial: "info_window", locals: { campsite: campsite }),
+        image_url: helpers.asset_url('favicon.png')
       }
     end
     # at this point campsites should be an array of suitable objects ready for view.
