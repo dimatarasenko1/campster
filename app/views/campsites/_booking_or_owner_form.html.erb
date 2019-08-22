@@ -2,7 +2,7 @@
   <p class="text-right m-0"><strong>£<%= campsite.price_per_night %> per night</strong></p>
   <% if policy(Booking.new(campsite: campsite)).create? %>
   <%= simple_form_for :query, url: new_campsite_booking_path(campsite), method: :get do |f| %>
-      <%= f.input :dates, as: :string, input_html: {id: "query_date-field"}, readonly: false %>
+      <%= f.input :dates, as: :string, input_html: {id: "query_date-field"} %>
       <%= f.input :guests, as: :integer %>
       <%= f.button :submit, "Book!", class: "btn-primary" %>
     <% end %>
