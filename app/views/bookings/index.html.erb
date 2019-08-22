@@ -5,7 +5,8 @@
       <div class="cards">
         <ul>
           <% @bookings.each do |booking| %>
-            <li> <%= booking.id %> - <%= link_to booking.campsite.title ,booking_path(booking) %> </li>
+            <li> <%= booking.id %> - <%= link_to booking.campsite.title ,booking_path(booking) %> <%= link_to "Leave a Review", new_booking_review_path(booking) %>
+            </li>
           <% end %>
         </ul>
       </div>
