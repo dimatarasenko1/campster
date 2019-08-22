@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>New Campsite</h2>
+  <%= simple_form_for campsite do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :price_per_night %>
+    <%= f.input :address, input_html: { id: "campsite-address" } %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.button :submit, class: "btn-primary" %>
+  <% end %>
+</div>
+
