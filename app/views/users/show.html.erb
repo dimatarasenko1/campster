@@ -1,1 +1,21 @@
-<h1>Hi, <%= current_user.first_name %>! Nice to see you 😎</h1>
+<div class="container mt-0 mb-3">
+  <h1 class="border-bottom pb-3 mb-3">Hi, <%= current_user.first_name %>! Nice to see you 😎</h1>
+  <%= link_to user_bookings_path(current_user) do %>
+    <h2 class="border-bottom pb-3 mb-3">Your Bookings</h2>
+  <% end %>
+  <h2>Change Picture</h2>
+  <div class="text-center" style="height: 200; width: 200; margin: 0 auto;">
+    <% if current_user.photo.filename %>
+      <%= cl_image_tag current_user.photo, height: 200, width: 200, crop: :fill %>
+    <% else %>
+      <p>No image yet</p>
+    <% end %>
+    <button id="uploadModal" class="btn btn-primary modalBtn">Change</button>
+    <div name="uploadModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <%= render 'upload_photo', user: current_user %>
+      </div>
+    </div>
+  </div>
+</div>

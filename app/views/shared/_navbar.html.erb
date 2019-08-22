@@ -16,7 +16,7 @@
         </li>
         <li>
           <!-- Trigger/Open The Modal -->
-          <button id="myBtn" class="nav-link btn btn-outline-primary">Host</button>
+          <button id="myModal" class="nav-link btn btn-outline-primary modalBtn">Host</button>
           <!-- The Modal -->
           <div id="myModal" class="modal">
             <!-- Modal content -->
@@ -27,7 +27,11 @@
           </div>
         </li>
         <li class="nav-item dropdown mx-2">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% if current_user.photo.filename %>
+            <%= cl_image_tag current_user.photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "My Account", user_path(current_user), class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
