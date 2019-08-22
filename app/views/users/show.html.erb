@@ -4,9 +4,9 @@
     <h2 class="border-bottom pb-3 mb-3">Your Bookings</h2>
   <% end %>
   <h2>Change Picture</h2>
-  <div class="text-center" style="height: 300; width: 400; margin: 0 auto;">
+  <div class="text-center" style="height: 200; width: 200; margin: 0 auto;">
     <% if current_user.photo.filename %>
-      <%= cl_image_tag current_user.photo, height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag current_user.photo, height: 200, width: 200, crop: :fill %>
     <% else %>
       <p>No image yet</p>
     <% end %>
