@@ -8,5 +8,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :timeoutable
   #email is validated automatically by devise
-
+  mount_uploader :photo, PhotoUploader
 end

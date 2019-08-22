@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create, :index]
   end
 
-  resources :users, only: :show
+  resources :users, only: [:show, :update]
 
   resources :users, only: [:show, :index] do
     resources :bookings, only: [:new, :create, :index]

@@ -4,7 +4,10 @@
     <h4><strong>(<%= @booking.campsite.user.first_name %></strong> is your host for this booking)</h4>
     <br>
     <h4>
-      Dates: <strong>8 Sep' 19</strong> to <strong>15 Sep' 19</strong>
+      Dates: <strong><%= @booking.start_date.to_date if @booking.start_date %></strong> to <strong><%= @booking.end_date.to_date if @booking.end_date %></strong>
+    </h4>
+    <h4>
+      Guests: <strong><%= @booking.guests %></strong>
     </h4>
     <hr>
     <br>

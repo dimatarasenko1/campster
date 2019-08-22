@@ -4,12 +4,20 @@
     <h4><strong>(<%= current_user.first_name.titleize %></strong> is your host for this booking)</h4>
     <br>
     <h4>
-      Dates: <strong>8 Sep' 19</strong> to <strong>15 Sep' 19</strong>
+      Dates: <strong><%= @booking.start_date.to_date %></strong> to <strong><%= @booking.end_date.to_date %></strong>
+    </h4>
+    <h4>
+      Guests: <strong><%= @booking.guests %></strong>
     </h4>
     <hr>
     <br>
     <%= simple_form_for [@campsite, @booking] do |f| %>
-      <%= f.button :submit, class: "btn-primary" %>
+      <%= f.input :guests, as: :hidden %>
+      <%= f.input :start_date, as: :hidden %>
+      <%= f.input :end_date, as: :hidden %>
+      <%= f.association :user, as: :hidden  %>
+      <%= f.association :campsite, as: :hidden %>
+      <%= f.button :submit, "Confirm Booking", class: "btn-primary" %>
     <% end %>
   </div>
 </div>
