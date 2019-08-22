@@ -1,0 +1,10 @@
+<div class="container" style="display: flex; justify-content: space-evenly;">
+  <div class="left-container">
+  <%= simple_form_for [@booking, @review] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <%= f.input :rating %>
+    <%= f.button :submit, class: "btn-primary" %>
+  <% end %>
+  </div>
+</div>
