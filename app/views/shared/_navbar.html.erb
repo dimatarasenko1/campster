@@ -14,8 +14,17 @@
         <li class="nav-item mx-2">
           <%= link_to "My bookings", user_bookings_path(current_user), class: "nav-link" %>
         </li>
-        <li class="nav-item mx-2">
-          <%= link_to "New Campsite", new_campsite_path, class: "nav-link" %>
+        <li>
+          <!-- Trigger/Open The Modal -->
+          <button id="myBtn" class="nav-link btn btn-outline-primary">Host</button>
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <%= render 'campsites/new', campsite: Campsite.new %>
+            </div>
+          </div>
         </li>
         <li class="nav-item dropdown mx-2">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -31,8 +40,17 @@
         <li class="nav-item mx-2">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
-        <li class="nav-item mx-2">
-          <%= link_to "Host", new_user_registration_path, class: "nav-link btn btn-outline-primary" %>
+        <li>
+          <!-- Trigger/Open The Modal -->
+          <button id="myBtn" class="nav-link btn btn-outline-primary">Host</button>
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <%= render 'campsites/new', campsite: Campsite.new %>
+            </div>
+          </div>
         </li>
       <% end %>
     </ul>
