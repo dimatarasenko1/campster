@@ -44,18 +44,6 @@
         <li class="nav-item mx-2">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
-        <li>
-          <!-- Trigger/Open The Modal -->
-          <button id="myBtn" class="nav-link btn btn-outline-primary">Host</button>
-          <!-- The Modal -->
-          <div id="myModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <%= render 'campsites/new', campsite: Campsite.new %>
-            </div>
-          </div>
-        </li>
       <% end %>
     </ul>
   </div>
