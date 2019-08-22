@@ -8,6 +8,13 @@ const initAutocomplete = () => {
     })
     places({ container: addressInput, autocompleteOptions: {autoselect: false} });
   }
+  const secondAddressInput = document.getElementById('campsite-address');
+  if (secondAddressInput) {
+    secondAddressInput.addEventListener("blur", () => {
+      document.getElementById('algolia-places-listbox-0').style.display = "none";
+    })
+    places({ container: secondAddressInput, autocompleteOptions: {autoselect: false} });
+  }
 }
 
 export { initAutocomplete };
