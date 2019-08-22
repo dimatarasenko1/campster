@@ -5,14 +5,24 @@ class CampsitesController < ApplicationController
     authorize Campsite
     if params[:query] && params[:query]["campsite-address"] != ""
       query_params = params[:query]
-      address = query_params["address"]
-      @campsites = policy_scope(Campsite)
+      dates = query_params["date-field"].split(" to ")
+      start_date = Date.parse(dates[0])
+      end_date = Date.parse(dates[1])
+      search_dates = (start_date..end_date).to_a
+      address = query_params["campsite-address"]
       @campsites = Campsite.near(address, 100)
+      sql_query = ':start NOT BETWEEN unavailables.start_date AND unavailables.end_date OR
+                   :end BETWEEN unavailables.start_date AND unavailables.end_date
+                    OR
+                   :start NOT BETWEEN bookings.start_date AND bookings.end_date OR
+                   :end BETWEEN bookings.start_date AND bookings.end_date'
+      @campsites = @campsites.joins(:bookings).joins(:unavailables).where(sql_query, {start: start_date, end: end_date})
+      raise
+      @campsites = policy_scope(Campsite)
     else
       @campsites = policy_scope(Campsite)
     end
     @campsites = @campsites.geocoded # returns campsites with coordinates
-
     @markers = @campsites.map do |campsite|
       {
         lat: campsite.latitude,
