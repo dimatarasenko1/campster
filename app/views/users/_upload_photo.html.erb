@@ -1,0 +1,5 @@
+<%= simple_form_for user do |f| %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.button :submit, class: "btn-primary" %>
+<% end %>

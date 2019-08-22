@@ -1,7 +1,13 @@
 <%= simple_form_for :query, url: campsites_path, method: :get do |f| %>
-    <%= f.input :address, input_html: { id: "campsite-address" } %>
-    <%= f.input :start_date, as: :string, input_html: {type: :date} %>
-    <%= f.input :end_date, as: :string, input_html: {type: :date} %>
-    <%= f.input :guests, as: :integer %>
-    <%= f.button :submit, "Search!", class: "btn-primary" %>
+  <fieldset>
+    <legend>
+      <h1>Camping experience made simple</h1>
+      <h2 class="ml-0 mb-4">Camp on private lands and access unique and safe new places</h2>
+    </legend>
+  </fieldset>
+  <div class="d-flex home-search">
+    <input name="query[campsite-address]" id="query_campsite-address" type="text" placeholder="Where do you want to go?"/>
+    <input class="mx-2 px-3" name="query[date-field]" id="query_date-field" type="text" placeholder="When?"/>
+    <button class="btn btn-primary" type="submit">SEARCH</button>
+  </div>
 <% end %>
