@@ -3,14 +3,26 @@
   <div class="container" style="display: flex; justify-content: space-evenly;">
     <div class="left-container" style="justify-content: space-between;">
       <div class="cards">
-        <ul>
+
           <% @bookings.each do |booking| %>
-            <li> <%= booking.id %> - <%= link_to booking.campsite.title ,booking_path(booking) %> <%= link_to "Leave a Review", new_booking_review_path(booking) %>
-            </li>
+            <!-- <li>
+              <%= booking.id %> - <%= link_to booking.campsite.title ,booking_path(booking) %> <%= link_to "Leave a Review", new_booking_review_path(booking) %>
+            </li> -->
+
+          <%= render 'shared/campsite_card', campsite: booking.campsite %>
+
           <% end %>
-        </ul>
+
       </div>
     </div>
+    <div class="right-container" >
+      <div
+        id="map"
+        style="width: 350px;
+        height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
   </div>
 </div>
 
