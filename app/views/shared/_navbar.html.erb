@@ -11,12 +11,12 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item mx-2">
+        <li class="nav-item mx-3">
           <%= link_to "My bookings", user_bookings_path(current_user), class: "nav-link" %>
         </li>
         <li>
           <!-- Trigger/Open The Modal -->
-          <button id="myModal" class="nav-link btn btn-outline-primary modalBtn">Host</button>
+          <button id="myModal" class="nav-link btn btn-outline-primary modalBtn mr-3">Host</button>
           <!-- The Modal -->
           <div name="myModal" class="modal">
             <!-- Modal content -->
@@ -43,18 +43,6 @@
         </li>
         <li class="nav-item mx-2">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-        <li>
-          <!-- Trigger/Open The Modal -->
-          <button id="myBtn" class="nav-link btn btn-outline-primary">Host</button>
-          <!-- The Modal -->
-          <div id="myModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <%= render 'campsites/new', campsite: Campsite.new %>
-            </div>
-          </div>
         </li>
       <% end %>
     </ul>
