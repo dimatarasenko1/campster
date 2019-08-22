@@ -28,3 +28,7 @@
 #review-achor:hover {
   color: inherit;
 }
+
+.form-control:disabled, .form-control[readonly] {
+  background-color: inherit;
+}
