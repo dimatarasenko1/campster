@@ -1,5 +1,5 @@
 <div class="book flex-grow-1 bg-light p-3 border rounded w-100">
-  <p class="text-right m-0"><strong>£<%= campsite.price_per_night %> per night</strong></p>
+  <p class="text-right m-0 mb-3"><strong>£<%= campsite.price_per_night %> per night</strong></p>
   <% if policy(Booking.new(campsite: campsite)).create? %>
   <%= simple_form_for :query, url: new_campsite_booking_path(campsite), method: :get do |f| %>
       <%= f.input :dates, as: :string, input_html: {id: "query_date-field"} %>
