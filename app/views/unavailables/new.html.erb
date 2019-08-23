@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="container-form">
+    <h2>Add a reserved period</h2>
+  <%= simple_form_for [@campsite, @unavailable] do |f| %>
+    <%= f.input :start_date, as: :string, input_html: { id: "query_date-field" } %>
+  </div>
+  <div class="container-btns">
+    <div class="new-btn-left">
+      <%= f.button :submit, class: "btn-primary" %>
+    </div>
+    <% end %>
+    <div class="new-btn-right btn btn-outline-primary">
+      <%= link_to 'Back to your camp', campsite_path(@campsite) %>
+    </div>
+  </div>
+</div>
