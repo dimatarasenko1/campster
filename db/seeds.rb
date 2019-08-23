@@ -141,7 +141,7 @@ campsites_attributes = [
     user: landlord,
   },
   {
-    title: "Kathleen's lodge - Great sea view",
+    title: "Kathleen's lodge - Great lake view",
     description: "Campster Exclusive - Amazing land next to a lake. Kathleen's, her husband and their 2 dogs will welcome you on their private lands located next to a lake. In addition, Kathleen can provide trekk lunch for an additional price, as well as toilets and garbage disposal amenities. Perfect for trekkers walking along the Forester Coast road.",
     price_per_night: 10,
     check_in: "5 PM",
