@@ -14,7 +14,7 @@
     <%= render 'shared/navbar' %>
     <!-- <p class="notice m-0"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
-    <div class="general-container" style="margin-bottom: 0px; <% unless current_page?('/') %>margin-top: 40px; <% end %>">
+    <div class="general-container" style="<% unless current_page?('/') %>margin-top: 40px; <% end %>">
       <%= yield %>
     </div>
     <%= render 'shared/footer' %>

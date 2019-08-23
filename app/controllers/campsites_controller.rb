@@ -11,14 +11,16 @@ class CampsitesController < ApplicationController
       search_dates = (start_date..end_date).to_a
       address = query_params["campsite-address"]
       @campsites = Campsite.near(address, 100)
-      sql_query = ':start NOT BETWEEN unavailables.start_date AND unavailables.end_date OR
-                   :end BETWEEN unavailables.start_date AND unavailables.end_date
-                    OR
-                   :start NOT BETWEEN bookings.start_date AND bookings.end_date OR
-                   :end BETWEEN bookings.start_date AND bookings.end_date'
-      @campsites = @campsites.joins(:bookings).joins(:unavailables).where(sql_query, {start: start_date, end: end_date})
-      raise
-      @campsites = policy_scope(Campsite)
+
+      @campsites = Campsite.near(address, 100).joins(:unavailables, :bookings)
+                           .where("unavailables.start_date < ?", start_date)
+                           .where("unavailables.end_date > ?", end_date)
+                           .where("bookings.start_date < ?", start_date)
+                           .where("bookings.end_date > ?", end_date)
+      # @campsites = @campsites.joins(:bookings).joins(:unavailables).where(sql_query, {start: start_date, end: end_date})
+      # raise
+      # @campsites = policy_scope(Campsite)
+      skip_policy_scope
     else
       @campsites = policy_scope(Campsite)
     end
@@ -28,7 +30,7 @@ class CampsitesController < ApplicationController
         lat: campsite.latitude,
         lng: campsite.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { campsite: campsite }),
-        image_url: helpers.asset_url('favicon.png')
+        image_url: helpers.asset_url('black_pointer.png')
       }
     end
     # at this point campsites should be an array of suitable objects ready for view.
