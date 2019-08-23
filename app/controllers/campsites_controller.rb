@@ -64,6 +64,12 @@ class CampsitesController < ApplicationController
     end
   end
 
+  def destroy
+    @campsite = Campsite.find(params[:id])
+    @campsite.destroy
+    redirect_to campsites_path
+  end
+
   private
 
   def campsite_params

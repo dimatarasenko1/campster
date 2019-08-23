@@ -1,0 +1,22 @@
+
+<div class="container">
+  <div class="container-form">
+    <h2>New Campsite</h2>
+  <%= simple_form_for @campsite do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :price_per_night %>
+    <%= f.input :address, input_html: { id: "campsite-address" } %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+  </div>
+  <div class="container-btns">
+    <div class="new-btn-left">
+      <%= f.button :submit, class: "btn-primary" %>
+    </div>
+    <% end %>
+    <div class="new-btn-right btn btn-outline-primary">
+      <%= link_to 'Back to your camp', campsite_path(@campsite) %>
+    </div>
+  </div>
+</div>
