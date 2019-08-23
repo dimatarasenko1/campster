@@ -9,12 +9,14 @@
       <%= render 'amenities' %>
       <%= render 'flat_details' %>
     </div>
+    <% if @campsite.reviews.any? %>
       <div class="reviews pt-3">
         <a name="reviews" id="review-anchor">
           <h2>Reviews</h2>
         </a>
         <%= render 'review' %>
       </div>
+    <% end %>
   </div>
 </div>
 

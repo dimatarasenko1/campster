@@ -2,8 +2,6 @@
   <h2 style="text-align: center;">
     <% if @bookings.any? %>
       My Bookings
-    <% else %>
-      Start Booking
     <% end %>
   </h2>
   <div class="container" style="display: flex; justify-content: space-evenly;">
@@ -31,12 +29,13 @@
       </div>
       <% else %>
       <div class="left-container" style="margin-top: 80px">
-        <p>There was never a better time for camping...</p>
+        <h3>Best time for camping is now...</h4>
+        <p>Go ahead! Find your next campsite.</p>
 
-        <a href="../../campsites/" class="btn btn-outline-primary mr-3">Find my next campsite</a>
+        <a href="../../campsites/" class="btn btn-outline-primary mr-3">Find my campsite</a>
       </div>
       <div class="right-container" style="margin-top: 60px">
-        <%= image_tag("campfire.png", width: "600") %>
+        <%= image_tag("campfire.png", width: "700") %>
       </div>
 
       <% end %>
