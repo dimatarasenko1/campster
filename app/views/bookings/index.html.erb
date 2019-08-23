@@ -15,9 +15,11 @@
 
             <%= render 'shared/campsite_card', campsite: booking.campsite %>
             <br>
-              <button id="LeaveReview" class="nav-link btn btn-outline-primary modalBtn mr-3 btn-block">Leave Review</button>
+            <% unless booking.reviews.select { |review| review.booking.user == current_user  }.any? %>
+              <button id="LeaveReview_<%= booking.id%>" class="nav-link btn btn-outline-primary modalBtn mr-3 btn-block">Leave Review</button>
+            <% end %>
             <!-- The Modal -->
-            <div name="LeaveReview" class="modal">
+            <div name="LeaveReview_<%= booking.id%>" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
                   <span class="close">&times;</span>
@@ -34,7 +36,7 @@
 
         <a href="../../campsites/" class="btn btn-outline-primary mr-3">Find my campsite</a>
       </div>
-      <div class="right-container" style="margin-top: 60px">
+      <div class="right-container" style="margin-top: 60px; width: 600px;">
         <%= image_tag("campfire.png", width: "700") %>
       </div>
 
@@ -42,5 +44,3 @@
 
   </div>
 </div>
-
-

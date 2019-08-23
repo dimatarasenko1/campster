@@ -2,21 +2,20 @@
   <div class="reviews">
     <div class="row blockquote review-item">
       <div class="col-md-2 text-center">
-        <img class="rounded-circle reviewer" src="https://kitt.lewagon.com/placeholder/users/ssaunier" width="100">
+        <img class="rounded-circle reviewer" src="https://kitt.lewagon.com/placeholder/users/ssaunier" width="75">
         <div class="caption">
-          <small>Joe</small>
+          <small>Joe on <%= review.created_at.strftime("%d %b")
+ %></small>
         </div>
 
       </div>
       <div class="col-md-10">
-        <h4><%= review.title %></h4>
-        <% review.rating.to_i.times do %>
+        <h5><%= review.title %> <small>(<% review.rating.to_i.times do %>
           <i class="fa fa-star"></i>
-        <% end %>
-        <div class="ratebox text-center" data-id="0" data-rating=""></div>
+        <% end %>)</small></h5>
+        <div class="ratebox text-center" data-id="0" data-rating="<%= review.rating.to_i %>"></div>
         <p class="review-text"><%= review.content %></p>
-        <small class="review-date"><%= review.created_at.strftime("%d-%m-%Y")
- %></small>
+        <small class="review-date"></small>
       </div>
     </div>
   </div>

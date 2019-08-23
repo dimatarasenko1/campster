@@ -5,19 +5,22 @@
     <%= render 'booking_or_owner_form', campsite: @campsite %>
   </div>
   <div class="bg-light p-3 border rounded">
-    <div class="big-details d-flex ml-3 justify-content-around">
+    <div class="big-details d-flex ml-3 justify-content-flex-start">
       <%= render 'amenities' %>
       <%= render 'flat_details' %>
     </div>
-    <% if @campsite.reviews.any? %>
-      <div class="reviews pt-3">
-        <a name="reviews" id="review-anchor">
-          <h2>Reviews</h2>
-        </a>
-        <%= render 'review' %>
-      </div>
-    <% end %>
   </div>
+  <br>
+  <% if @campsite.reviews.any? %>
+    <div class="bg-light p-3 border rounded">
+      <div class="big-details ml-3">
+        <div class="reviews pt-3">
+          <a name="reviews" id="review-anchor">
+            <h3 class="mb-4">Reviews</h3>
+          </a>
+          <%= render 'review' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
-
-
