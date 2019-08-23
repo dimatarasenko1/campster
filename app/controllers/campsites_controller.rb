@@ -3,17 +3,25 @@ class CampsitesController < ApplicationController
 
   def index
     authorize Campsite
+    @campsites = nil
     if params_exist?
       query_params = params[:query]
-      dates = query_params["date-field"].split(" to ")
-      start_date = DateTime.parse(dates[0])
-      end_date = DateTime.parse(dates[1])
-      search_dates = (start_date..end_date).to_a
-      address = query_params["campsite-address"]
-      @campsites = policy_scope(Campsite).near(address, 100)
-      @campsites = Campsite.search(@campsites, search_dates)
+      if params_include_address?
+        address = query_params["campsite-address"]
+        @campsites = policy_scope(Campsite).near(address, 100)
+        @campsites ||= general_location_search
+      end
+      if params_include_dates?
+        dates = query_params["date-field"].split(" to ")
+        start_date = DateTime.parse(dates[0])
+        end_date = DateTime.parse(dates[1])
+        search_dates = (start_date..end_date).to_a
+        @campsites ||= general_location_search
+        @campsites = Campsite.search(@campsites, search_dates)
+      end
+      @campsites ||= general_location_search
     else
-      @campsites = policy_scope(Campsite)
+      @campsites = general_location_search
     end
     @campsites = @campsites.geocoded # returns campsites with coordinates
     @markers = @campsites.map do |campsite|
@@ -86,7 +94,19 @@ class CampsitesController < ApplicationController
                                      :photo)
   end
 
+  def general_location_search
+    policy_scope(Campsite).near("United Kingdom", 1000)
+  end
+
   def params_exist?
-    params[:query] && params[:query]["campsite-address"] != "" && params[:query]["date-field"] != ""
+    params[:query]
+  end
+
+  def params_include_address?
+    params[:query]["campsite-address"] != ""
+  end
+
+  def params_include_dates?
+    params[:query]["date-field"] != ""
   end
 end
