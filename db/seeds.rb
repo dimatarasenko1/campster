@@ -109,7 +109,7 @@ campsites_attributes = [
   },
   {
     title: "Sharamore House",
-    description: "Louis and Terry are happy to host you on their property. A minute's walk from the coastline, this secluded B&B sits 3.5 km from the beaches and hiking trails of Clifden, and 10 km from Connemara National Park.",
+    description: "Louis and Terry are happy to host you on their property. A minute's walk from the coastline, this secluded property sits 3.5 km from the beaches and hiking trails of Clifden, and 10 km from Connemara National Park.",
     price_per_night: 20,
     check_in: "5 PM",
     check_out: "10 AM",
@@ -195,4 +195,5 @@ campsite = Campsite.offset(5).fifth
 url = "https://res.cloudinary.com/dqh0reqn3/image/upload/v1566565833/camping-10.jpg"
 campsite.remote_photo_url = url
 campsite.save
+
 puts 'Finished!'
