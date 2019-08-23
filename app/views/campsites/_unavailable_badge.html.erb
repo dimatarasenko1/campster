@@ -1,0 +1,10 @@
+<p>
+  <% if object.class == Booking  && object.start_date %>
+    <span class="badge badge-primary text-light">Booking</span>
+    <strong> <%= object.start_date.to_date %></strong> to <strong><%= object.end_date.to_date %></strong>
+  <% elsif object.start_date %>
+    <span class="badge badge-secondary">Unavailable</span>
+    <strong> <%= object.start_date.to_date %></strong> to <strong><%= object.end_date.to_date %></strong>
+  <% end %>
+</p>
+
