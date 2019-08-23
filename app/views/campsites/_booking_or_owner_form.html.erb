@@ -9,6 +9,9 @@
   <% elsif policy(campsite).update? %>
     <%= link_to "Edit Campsite", edit_campsite_path(campsite), class: "btn btn-primary" %>
     <%= link_to "Manage Availability", edit_campsite_path(campsite), class: "btn btn-outline-primary" %>
-    <%= link_to "Remove from Campster", edit_campsite_path(campsite), class: "btn btn-danger" %>
+    <%= link_to "Remove from Campster", campsite_path(campsite),
+      method: :delete,
+      class: "btn btn-danger",
+      data: { confirm: "Are you sure?" } %>
   <% end %>
 </div>

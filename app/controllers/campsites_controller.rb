@@ -3,26 +3,25 @@ class CampsitesController < ApplicationController
 
   def index
     authorize Campsite
-    if params[:query] && params[:query]["campsite-address"] != ""
+    @campsites = nil
+    if params_exist?
       query_params = params[:query]
-      dates = query_params["date-field"].split(" to ")
-      start_date = Date.parse(dates[0])
-      end_date = Date.parse(dates[1])
-      search_dates = (start_date..end_date).to_a
-      address = query_params["campsite-address"]
-      @campsites = Campsite.near(address, 100)
-
-      @campsites = Campsite.near(address, 100).joins(:unavailables, :bookings)
-                           .where("unavailables.start_date < ?", start_date)
-                           .where("unavailables.end_date > ?", end_date)
-                           .where("bookings.start_date < ?", start_date)
-                           .where("bookings.end_date > ?", end_date)
-      # @campsites = @campsites.joins(:bookings).joins(:unavailables).where(sql_query, {start: start_date, end: end_date})
-      # raise
-      # @campsites = policy_scope(Campsite)
-      skip_policy_scope
+      if params_include_address?
+        address = query_params["campsite-address"]
+        @campsites = policy_scope(Campsite).near(address, 100)
+        @campsites ||= general_location_search
+      end
+      if params_include_dates?
+        dates = query_params["date-field"].split(" to ")
+        start_date = DateTime.parse(dates[0])
+        end_date = DateTime.parse(dates[1])
+        search_dates = (start_date..end_date).to_a
+        @campsites ||= general_location_search
+        @campsites = Campsite.search(@campsites, search_dates)
+      end
+      @campsites ||= general_location_search
     else
-      @campsites = policy_scope(Campsite)
+      @campsites = general_location_search
     end
     @campsites = @campsites.geocoded # returns campsites with coordinates
     @markers = @campsites.map do |campsite|
@@ -33,8 +32,6 @@ class CampsitesController < ApplicationController
         image_url: helpers.asset_url('black_pointer.png')
       }
     end
-    # at this point campsites should be an array of suitable objects ready for view.
-    # the search method is moved to model so we can add complexity.
   end
 
   def new
@@ -76,6 +73,12 @@ class CampsitesController < ApplicationController
     end
   end
 
+  def destroy
+    @campsite = Campsite.find(params[:id])
+    @campsite.destroy
+    redirect_to campsites_path
+  end
+
   private
 
   def campsite_params
@@ -89,5 +92,21 @@ class CampsitesController < ApplicationController
                                      :max_guests,
                                      :amenities,
                                      :photo)
+  end
+
+  def general_location_search
+    policy_scope(Campsite).near("United Kingdom", 1000)
+  end
+
+  def params_exist?
+    params[:query]
+  end
+
+  def params_include_address?
+    params[:query]["campsite-address"] != ""
+  end
+
+  def params_include_dates?
+    params[:query]["date-field"] != ""
   end
 end
