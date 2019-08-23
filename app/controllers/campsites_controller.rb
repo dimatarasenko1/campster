@@ -3,22 +3,15 @@ class CampsitesController < ApplicationController
 
   def index
     authorize Campsite
-    if params[:query] && params[:query]["campsite-address"] != ""
+    if params_exist?
       query_params = params[:query]
       dates = query_params["date-field"].split(" to ")
-      start_date = Date.parse(dates[0])
-      end_date = Date.parse(dates[1])
+      start_date = DateTime.parse(dates[0])
+      end_date = DateTime.parse(dates[1])
       search_dates = (start_date..end_date).to_a
       address = query_params["campsite-address"]
-      @campsites = Campsite.near(address, 100)
-      sql_query = ':start NOT BETWEEN unavailables.start_date AND unavailables.end_date OR
-                   :end BETWEEN unavailables.start_date AND unavailables.end_date
-                    OR
-                   :start NOT BETWEEN bookings.start_date AND bookings.end_date OR
-                   :end BETWEEN bookings.start_date AND bookings.end_date'
-      @campsites = @campsites.joins(:bookings).joins(:unavailables).where(sql_query, {start: start_date, end: end_date})
-      raise
-      @campsites = policy_scope(Campsite)
+      @campsites = policy_scope(Campsite).near(address, 100)
+      @campsites = Campsite.search(@campsites, search_dates)
     else
       @campsites = policy_scope(Campsite)
     end
@@ -31,8 +24,6 @@ class CampsitesController < ApplicationController
         image_url: helpers.asset_url('favicon.png')
       }
     end
-    # at this point campsites should be an array of suitable objects ready for view.
-    # the search method is moved to model so we can add complexity.
   end
 
   def new
@@ -87,5 +78,9 @@ class CampsitesController < ApplicationController
                                      :max_guests,
                                      :amenities,
                                      :photo)
+  end
+
+  def params_exist?
+    params[:query] && params[:query]["campsite-address"] != "" && params[:query]["date-field"] != ""
   end
 end
