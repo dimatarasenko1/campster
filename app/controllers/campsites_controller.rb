@@ -29,7 +29,7 @@ class CampsitesController < ApplicationController
         lat: campsite.latitude,
         lng: campsite.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { campsite: campsite }),
-        image_url: helpers.asset_url('favicon.png')
+        image_url: helpers.asset_url('black_pointer.png')
       }
     end
   end

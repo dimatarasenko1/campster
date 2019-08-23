@@ -1,6 +1,6 @@
 <div class="container" style="display: flex; justify-content: space-evenly;">
   <div class="left-container">
-  <%= simple_form_for [@booking, @review] do |f| %>
+  <%= simple_form_for [booking, review] do |f| %>
     <%= f.input :title %>
     <%= f.input :content %>
     <%= f.input :rating %>
